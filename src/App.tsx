@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/main.scss';
-import { Navigation, HeroSection, TourDates, AboutSection, Footer } from './components';
+import { Navigation, HeroSection, ShowsSection, FloatingMusicPlayer, TourDates, AboutSection, Footer } from './components';
 
 const App: React.FC = () => {
   return (
@@ -8,8 +8,10 @@ const App: React.FC = () => {
       <Navigation />
       <HeroSection />
       <TourDates />
+      <ShowsSection />
       <AboutSection />
       <Footer />
+      <FloatingMusicPlayer />
     </div>
   );
 };

@@ -4,16 +4,10 @@ const HeroSection: React.FC = () => {
   return (
     <section id="home" className="hero-banner">
       <div className="hero-content">
-        {/* <img
-          src="/universe.jpg"
-          alt="The U1niverse"
-          className="hero-image desktop"
-        /> */}
-        <video src="/u.mp4" autoPlay muted loop className="artist-name-video" />
-        <img
-          src="/universe.jpg"
-          alt="The U1niverse"
-          className="hero-image mobile"
+        <img 
+          src="/u.gif" 
+          alt="The U1niverse Animation" 
+          className="artist-name-video"
         />
         <div className="hero-overlay">
           <div className="hero-text">

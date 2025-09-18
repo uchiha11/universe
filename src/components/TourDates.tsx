@@ -7,16 +7,6 @@ const TourDates: React.FC = () => {
       date: "Dec 13",
       year: "2025",
       venue: "Chennai - YMCA nandanam"
-    },
-    {
-      date: "Mar 22",
-      year: "2026",
-      venue: "Bangalore - Palace Grounds"
-    },
-    {
-      date: "Apr 5",
-      year: "2026",
-      venue: "Mumbai - MMRDA Grounds"
     }
   ];
 
@@ -30,7 +20,7 @@ const TourDates: React.FC = () => {
             <TourDateItem
               key={index}
               date={tour.date}
-              year={tour.year}
+              year={tour?.year}
               venue={tour.venue}
             />
           ))}
