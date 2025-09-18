@@ -14,6 +14,7 @@ const FloatingMusicPlayer: React.FC = () => {
     const playAudio = async () => {
       try {
         audio.volume = volume;
+        audio.preload = 'metadata'; // Only load metadata initially
         await audio.play();
         setIsPlaying(true);
       } catch (error) {
