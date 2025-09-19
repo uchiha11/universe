@@ -138,6 +138,19 @@ $transition: all 0.3s ease;
   }
 }
 
+// Screen reader only content for SEO
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 // Reset and base styles
 * {
   margin: 0;
@@ -474,6 +487,34 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: 1;
+}
+
+.video-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $border-color;
+    border-top: 3px solid $accent-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
 }
 
 .tour-title {

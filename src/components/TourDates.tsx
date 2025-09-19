@@ -4,9 +4,9 @@ import TourDateItem from './TourDateItem';
 const TourDates: React.FC = () => {
   const tourDates = [
     {
-      date: "Dec 13",
-      year: "2025",
-      venue: "Chennai - YMCA nandanam"
+      date: 'Dec 13',
+      year: '2025',
+      venue: 'Chennai - YMCA nandanam'
     }
   ];
 

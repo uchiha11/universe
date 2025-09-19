@@ -1,0 +1,91 @@
+{
+  "name": "YSR Yuvan Shankar Raja U1niverse - Concert Tours",
+  "short_name": "YSR U1niverse",
+  "description": "Official concert website of YSR Yuvan Shankar Raja U1niverse featuring tour dates, live shows, and ticket bookings",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7dd3c0",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["music", "entertainment"],
+  "icons": [
+    {
+      "src": "/heroText.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/heroText.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/heroText.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "platform": "wide",
+      "label": "U1niverse Hero Image"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tour Dates",
+      "short_name": "Tours",
+      "description": "View upcoming concert dates",
+      "url": "/#tour",
+      "icons": [
+        {
+          "src": "/heroText.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Concerts",
+      "short_name": "Shows",
+      "description": "Watch concert videos",
+      "url": "/#concerts",
+      "icons": [
+        {
+          "src": "/heroText.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "Learn about YSR Yuvan Shankar Raja",
+      "url": "/#about",
+      "icons": [
+        {
+          "src": "/heroText.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://u1niverse.com"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

@@ -5,7 +5,7 @@ const LoadingScreen: React.FC = () => {
     <div className="loading-screen">
       <div className="loading-content">
         <div className="loading-logo">
-          <img src="/heroText.png" alt="The U1niverse" className="loading-logo-image" />
+          <img src="/heroText.webp" alt="The U1niverse" className="loading-logo-image" />
         </div>
         <div className="loading-spinner">
           <div className="spinner"></div>

@@ -4,30 +4,65 @@ const FloatingMusicPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.3); // Lower default volume
+  const [autoplayAttempted, setAutoplayAttempted] = useState(false);
+
+  const attemptAutoplay = async () => {
+    const audio = audioRef.current;
+    if (!audio || autoplayAttempted) return;
+
+    try {
+      audio.volume = volume;
+      audio.preload = 'auto';
+      await audio.play();
+      setIsPlaying(true);
+      setAutoplayAttempted(true);
+      console.log('Music autoplay successful');
+    } catch (error) {
+      console.log('Autoplay failed:', error);
+      // Don't set autoplayAttempted to true so we can try again on user interaction
+    }
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Auto-play when component mounts
-    const playAudio = async () => {
-      try {
-        audio.volume = volume;
-        audio.preload = 'metadata'; // Only load metadata initially
-        await audio.play();
-        setIsPlaying(true);
-      } catch (error) {
-        console.log('Autoplay failed:', error);
-        // Autoplay failed, wait for user interaction
+    // Try immediate autoplay
+    attemptAutoplay();
+
+    // Try autoplay after loading screen (1 second delay)
+    const timer = setTimeout(attemptAutoplay, 1000);
+
+    // Try autoplay on any user interaction
+    const handleUserInteraction = () => {
+      if (!isPlaying && !autoplayAttempted) {
+        attemptAutoplay();
       }
     };
 
-    // Try to autoplay after a short delay
-    const timer = setTimeout(playAudio, 1000);
+    // Listen for various user interaction events
+    const events = ['click', 'touchstart', 'keydown', 'mousemove', 'scroll'];
+    events.forEach(event => {
+      document.addEventListener(event, handleUserInteraction, { once: true });
+    });
 
-    return () => clearTimeout(timer);
-  }, [volume]);
+    // Try autoplay when page becomes visible (tab switching)
+    const handleVisibilityChange = () => {
+      if (!document.hidden && !isPlaying && !autoplayAttempted) {
+        attemptAutoplay();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      clearTimeout(timer);
+      events.forEach(event => {
+        document.removeEventListener(event, handleUserInteraction);
+      });
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [volume, isPlaying, autoplayAttempted]);
 
   const togglePlay = async () => {
     const audio = audioRef.current;
@@ -59,10 +94,20 @@ const FloatingMusicPlayer: React.FC = () => {
     <div className={`floating-music-player ${isExpanded ? 'expanded' : ''}`}>
       <audio
         ref={audioRef}
-        src="/music.mp3"
         loop
         onEnded={() => setIsPlaying(false)}
-      />
+        onError={(e) => {
+          console.error('Audio loading error:', e);
+          setIsPlaying(false);
+        }}
+        onLoadStart={() => console.log('Audio loading started')}
+        onCanPlay={() => console.log('Audio can play')}
+        onLoadedData={() => console.log('Audio loaded')}
+      >
+        <source src="/music.mp3" type="audio/mpeg" />
+        <source src="/music.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
       
       <div className="player-main">
         <button 

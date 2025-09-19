@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
     entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
+      filename: isProduction ? '[name].[contenthash].js' : '[name].bundle.js',
       chunkFilename: isProduction ? '[name].[contenthash].chunk.js' : '[name].chunk.js',
       clean: true,
       publicPath: '/',
@@ -33,8 +33,11 @@ module.exports = (env, argv) => {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|mp4|webm)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp|mp4|webm|mp3|avi|mov)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/media/[name].[hash][ext]'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -69,7 +72,9 @@ module.exports = (env, argv) => {
         },
       },
     },
-    runtimeChunk: 'single',
+    runtimeChunk: {
+      name: 'runtime',
+    },
   },
   devServer: {
     static: [
