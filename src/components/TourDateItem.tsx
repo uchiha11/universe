@@ -4,9 +4,10 @@ interface TourDateItemProps {
   date: string;
   year?: string;
   venue: string;
+  desc?: string;
 }
 
-const TourDateItem: React.FC<TourDateItemProps> = ({ date, year, venue }) => {
+const TourDateItem: React.FC<TourDateItemProps> = ({ date, year, venue, desc }) => {
   return (
     <div className="tour-date-item">
       <div className="date-info">
@@ -15,6 +16,7 @@ const TourDateItem: React.FC<TourDateItemProps> = ({ date, year, venue }) => {
       </div>
       <div className="venue-info">
         <h3>{venue}</h3>
+        {desc && <p className="venue-desc">{desc}</p>}
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const Navigation: React.FC = () => {
                 <a href="#home" onClick={closeMobileMenu}>Home</a>
               </li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page slide-menu-gr-item">
-                <a href="#shows" onClick={closeMobileMenu}>Shows</a>
+                <a href="#shows" onClick={closeMobileMenu}>Upcoming Shows</a>
               </li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page slide-menu-gr-item">
                 <a href="#concerts" onClick={closeMobileMenu}>Concerts</a>

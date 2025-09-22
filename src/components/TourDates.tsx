@@ -6,7 +6,20 @@ const TourDates: React.FC = () => {
     {
       date: 'Dec 13',
       year: '2025',
-      venue: 'Chennai - YMCA nandanam'
+      venue: 'Chennai - YMCA Nandanam',
+      desc: 'Tickets Link opening soon..'
+    },
+    {
+      date: 'TBA',
+      venue: 'Paris'
+    },
+    {
+      date: 'TBA',
+      venue: 'Johor Bahru'
+    },
+    {
+      date: 'TBA',
+      venue: 'Dubai'
     }
   ];
 
@@ -19,9 +32,10 @@ const TourDates: React.FC = () => {
           {tourDates.map((tour, index) => (
             <TourDateItem
               key={index}
-              date={tour.date}
+              date={tour?.date}
               year={tour?.year}
               venue={tour.venue}
+              desc={tour.desc}
             />
           ))}
         </div>
